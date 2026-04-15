@@ -179,6 +179,14 @@ function updateCounter() {
   noteCounterSpan.textContent =
     count === 1 ? "1 note" : `${count} notes`;
 }
+
+function renderNotes() {
+  // ── clear container safely (no innerHTML) ──
+  while (notesContainer.firstChild) {
+    notesContainer.removeChild(notesContainer.firstChild);
+  }
+  
+}
     </script>
 </body>
 </html>
