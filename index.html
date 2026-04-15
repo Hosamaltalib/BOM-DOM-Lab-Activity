@@ -226,6 +226,16 @@ function renderNotes() {
     deleteBtn.setAttribute("data-action", "delete");
     deleteBtn.setAttribute("data-id", note.id);
 
+const editBtn = document.createElement("button");
+editBtn.textContent = "Edit";
+editBtn.style.background = "#fbbf24";
+editBtn.style.marginRight = "5px";
+editBtn.classList.add("delete-note"); 
+editBtn.setAttribute("data-action", "edit");
+editBtn.setAttribute("data-id", note.id);
+
+titleDiv.appendChild(editBtn); 
+
     titleDiv.appendChild(titleSpan);
     titleDiv.appendChild(deleteBtn);
 
@@ -340,6 +350,17 @@ function init() {
 }
 
 init(); // ← call init when the page loads
+
+function editNote(id) {
+    const note = notes.find(n => n.id === id);
+    if (note) {
+        const newTitle = prompt("Enter new title:", note.title);
+        if (newTitle !== null && newTitle.trim() !== "") {
+            note.title = newTitle.trim();
+            renderNotes();
+        }
+    }
+}
     </script>
 </body>
 </html>
